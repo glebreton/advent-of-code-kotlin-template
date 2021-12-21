@@ -10,18 +10,19 @@ fun String.toStep() = Step(
     substringAfter(" ").toInt()
 )
 
-class Position(var horizontal: Int = 0, var depth: Int = 0) {
+class Position(var horizontal: Int = 0, var depth: Int = 0, var aim: Int = 0) {
 
     fun forward(value: Int) {
         this.horizontal += value
+        this.depth += this.aim * value
     }
 
     fun up(value: Int) {
-        this.depth -= value
+        this.aim -= value
     }
 
     fun down(value: Int) {
-        this.depth += value
+        this.aim += value
     }
 
     fun result(): Int {
